@@ -5,23 +5,26 @@ const loadProducts = () => {
 
 // show all product in UI 
 const showProducts = (products) => {
-  console.log(products);
   const allProducts = products.map((pd) => pd);
   for (const product of allProducts) {
     const image = product.image;
     const div = document.createElement("div");
     div.classList.add("product");
+    // 
+    // 
     div.innerHTML = `
       <div class="single-product">
         <div>
           <img class="product-image" src=${image}></img>
         </div>
-        <h3>${product.title}</h3>
-        <p>Category: ${product.category}</p>
-        <h2>Price: $ ${product.price}</h2>
-        <h4 class="fw-bold">Rating: ${product.rating.rate}/5 (${product.rating.count})</h4>
-        <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-        <button id="details-btn" class="btn btn-danger">Details</button>
+        <h3 class="product-title">${product.title}</h3>
+        <p class="product-category">Category: ${product.category}</p>
+        <h3 class="product-price">Price: $ ${product.price}</h3>
+        <h4 class="fw-light">Rating: ${product.rating.rate}/5 Reviews: ${product.rating.count}</h4>
+        <div class="product-btns">
+        <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success button-right">Add To Cart</button>
+        <button id="details-btn" class="btn btn-danger button-left">Details</button>
+        </div>
       </div>
       `;
     document.getElementById("all-products").appendChild(div);
